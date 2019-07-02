@@ -23,3 +23,11 @@ Route::get('/categories/new','categoriesController@index');
 
 Route::post('store-categories','categoriesController@store');
 
+Route::get('/categories/index','categoriesController@show');
+
+Route::get('categories/{category}/delete','categoriesController@destroy');
+
+Route::get('categories/{category}/edit','categoriesController@edit');
+
+Route::post('categories/{category}/update-categories','categoriesController@update');
+

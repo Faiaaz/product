@@ -8,6 +8,14 @@
     <title>Document</title>
 </head>
 <body>
+<ul class="list-group">
+    @foreach($category as $ctgory)
 
+        <li class="list-group-item">
+            {{$ctgory->name}}
+        </li>
+
+    @endforeach
+</ul>
 </body>
 </html>
