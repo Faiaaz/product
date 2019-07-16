@@ -119,7 +119,13 @@ if (isset($_POST['register_button'])){
 
         // assign profile picture
 
-        $profile_pic = "";
+        $rand = rand(1,2);
+
+        if ($rand == 1)
+        $profile_pic = "assets/images/profile_pics/defaults/head_deep_blue.png";
+        else if ($rand == 2)
+            $profile_pic = "assets/images/profile_pics/defaults/head_emerald.png";
+
     }
 }
 ?>
