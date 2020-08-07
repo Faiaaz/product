@@ -1,21 +1,16 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<ul class="list-group">
-    @foreach($category as $ctgory)
+@extends('layouts.app')
 
-        <li class="list-group-item">
-            {{$ctgory->name}}
-        </li>
+@section('content')
 
-    @endforeach
-</ul>
-</body>
-</html>
+    <div class="d-flex justify-content-end">
+        <a href="/categories/create" class="btn btn-success mb-2">Add Category</a>
+
+    </div>
+
+<div class="card card-default">
+
+    <div class="card-header">Categories</div>
+</div>
+
+
+    @endsection

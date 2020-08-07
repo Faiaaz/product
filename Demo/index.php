@@ -1,26 +1,50 @@
-<?php
+<?php 
 
-$con = mysqli_connect("localhost","root","","social");
+include("includes/header.php");
+include ("includes/classes/User.php");
+include ("includes/classes/Post.php");
 
-if(mysqli_connect_errno()){
-    echo "failed to connect: " . mysqli_connect_errno();
+if (isset($_POST['post'])){
+    $post = new Post($con, $userloggedIn);
+    $post->submitPost($_POST['post_text'], 'none');
 }
 
-//$query  = mysqli_query($con,"INSERT INTO test values ('', 'Fahim')");
 
-?>
+ ?>
+
+<div class="user_details column">
+    <a href="<?php echo $userloggedIn ?>"> <img src="<?php echo $user['profile_pic']; ?>" alt=""> </a>
+
+    <div class="user_details_left_right">
+    <a href="<?php echo $userloggedIn ?>">
+    <?php
+        echo $user['first_name'] . " " . $user['last_name'];
+    ?>
+    </a>
+    <br>
+    <?php
+        echo "Posts: " . $user['num_posts']."<br/>";
+        echo "Likes: " . $user['num_likes'];
+    ?>
+    </div>
+</div>
+
+<div class="main_column column">
+
+    <form action="index.php" method="POST" class="post_form">
+        <textarea name="post_text" id="post_text" placeholder="share your thoughts!"></textarea>
+        <input type="submit" value="post" name="post" id="post_button">
+        <hr>
+    </form>
+
+    <?php
+        $user_obj = new User($con, $userloggedIn);
+        echo $user_obj->getFirstAndLastName();
+
+    ?>
+</div>
 
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-Hello!
+</div>
 </body>
 </html>
