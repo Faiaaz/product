@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use App\Product;
+
+use App\Exports\ProductExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -15,6 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
+
         return view('products.index', compact('products'));
     }
 
@@ -62,6 +65,11 @@ class ProductController extends Controller
         //
     }
 
+    public function excelDownload()
+    {
+
+        return Excel::download(new ProductExport, 'products.xlsx');
+    }
     public function search(Request $request)
     {
         $id = $request->get('id');
@@ -126,4 +134,6 @@ class ProductController extends Controller
 
         return redirect('/products')->with('success', 'Product deleted!');
     }
+
+
 }

@@ -4,26 +4,28 @@
     <div>
         <button type="submit" class="btn btn-primary" form="search-form">Search</button>
         <button style="margin: 19px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">Register</button>
+        <a href="{{ route('productExport') }}" class="btn btn-primary">Excel</a>
     </div>
-    {{-- modal starts here--}}
+
+    {{-- registration modal starts here--}}
 
     @include('products.create')
 
-    {{-- modal ends here --}}
+    {{-- registration modal ends here --}}
 
 
     {{-- table starts here --}}
     <div class="row">
         <div class="col-sm-12">
             <h4>Products</h4>
-            <table class="table table-striped">
+            <table class="table table-striped" id="productsTable">
                 <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>Name</td>
-                    <td>Email</td>
-                    <td>Phone</td>
-                </tr>
+                   <tr>
+                       <th>@sortablelink('id')</th>
+                       <th>@sortablelink('name')</th>
+                       <th>@sortablelink('email')</th>
+                       <th>@sortablelink('phone')</th>
+                   </tr>
                 </thead>
                 <tbody>
                 <form action="{{ route('productSearch') }}" id="search-form" method="GET">
